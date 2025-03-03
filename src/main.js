@@ -5,13 +5,12 @@ import{ showDetails }from"./views/details.js"
 import{ showCreate }from"./views/create.js"
 import{ showLogin }from"./views/login.js"
 import{ showRegister }from"./views/register.js"
+import { initialize } from "./router.js"
 
 
-const main = document.querySelector('main')
 
 document.getElementById('views').remove()
 
-document.querySelector('nav').addEventListener('click', onNavigate)
 
 const links = {
     '/':showHome,
@@ -23,40 +22,8 @@ const links = {
 
 }
 
-const context = {
-    showSection,
-    goTo
-}
+const router = initialize(links)
 
-goTo('/')
+router.goTo('/')
 
 
-function showSection(section){
-    
-    main.replaceChildren(section)
-
-}
-
-
-function onNavigate(e){
-    e.preventDefault()
-    let target = e.target
-    if (target.tagName == 'IMG') {
-        target = target.parentElement   
-        
-    }
-   
-    if(target.tagName== "A"){
-        const url = new URL(target.href)
-       goTo(url.pathname)
-    }
-    
-
-}
-
-function goTo(name){
-    const handler = links[name]
-    if (typeof handler == 'function') {
-        handler(context)
-    }
-}
