@@ -1,29 +1,35 @@
 import * as api from "./api.js"
+import { showHome } from "./views/home.js"
+import{ showCatalog }from"./views/catalog.js"
+import{ showDetails }from"./views/details.js"
+import{ showCreate }from"./views/create.js"
+import{ showLogin }from"./views/login.js"
+import{ showRegister }from"./views/register.js"
+
 
 const main = document.querySelector('body')
-const homePAge = document.getElementById('homePage')
-const registerPage = document.getElementById('registerPage')
-const loginPage = document.getElementById('loginPage')
-const catalogPage = document.getElementById('dashboard-holder')
-const detailsPage = document.getElementById('detailsPage')
-const createPage = document.getElementById('createPage')
+
 document.getElementById('views').remove()
 
 const links = {
-    '/':homePAge,
-    '/catalog':catalogPage,
-    '/details': detailsPage,
-    '/create': createPage,
-    '/login': loginPage,
-    '/register': registerPage
+    '/':showHome,
+    '/catalog':showCatalog,
+    '/details': showDetails,
+    '/create': showCreate,
+    '/login': showLogin,
+    '/register': showRegister
 
 }
 
-function showSection(name){
-    const section = links[name]
+const context = {
+    showSection
+}
+
+showHome(context)
+
+function showSection(section){
     
     main.replaceChildren(section)
 
 }
 
-showSection('/catalog')
