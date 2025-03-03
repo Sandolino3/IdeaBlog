@@ -24,8 +24,11 @@ const links = {
 }
 
 const context = {
-    showSection
+    showSection,
+    goTo
 }
+
+goTo('/')
 
 
 function showSection(section){
@@ -37,13 +40,23 @@ function showSection(section){
 
 function onNavigate(e){
     e.preventDefault()
-    if(e.target.tagName== "A"){
-        const url = new URL(e.target.href)
-        const handler = links[url.pathname]
-        if (typeof handler == 'function') {
-            handler(context)
-        }
+    let target = e.target
+    if (target.tagName == 'IMG') {
+        target = target.parentElement   
+        
+    }
+   
+    if(target.tagName== "A"){
+        const url = new URL(target.href)
+       goTo(url.pathname)
     }
     
 
+}
+
+function goTo(name){
+    const handler = links[name]
+    if (typeof handler == 'function') {
+        handler(context)
+    }
 }
