@@ -7,7 +7,7 @@ import{ showLogin }from"./views/login.js"
 import{ showRegister }from"./views/register.js"
 
 
-const main = document.querySelector('body')
+const main = document.querySelector('main')
 
 document.getElementById('views').remove()
 
@@ -27,7 +27,6 @@ const context = {
     showSection
 }
 
-// showHome(context)
 
 function showSection(section){
     
@@ -40,8 +39,10 @@ function onNavigate(e){
     e.preventDefault()
     if(e.target.tagName== "A"){
         const url = new URL(e.target.href)
-        console.log(url.pathname);
-        
+        const handler = links[url.pathname]
+        if (typeof handler == 'function') {
+            handler(context)
+        }
     }
     
 
