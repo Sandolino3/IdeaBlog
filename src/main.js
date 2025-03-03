@@ -11,6 +11,8 @@ const main = document.querySelector('body')
 
 document.getElementById('views').remove()
 
+document.querySelector('nav').addEventListener('click', onNavigate)
+
 const links = {
     '/':showHome,
     '/catalog':showCatalog,
@@ -25,7 +27,7 @@ const context = {
     showSection
 }
 
-showHome(context)
+// showHome(context)
 
 function showSection(section){
     
@@ -33,3 +35,14 @@ function showSection(section){
 
 }
 
+
+function onNavigate(e){
+    e.preventDefault()
+    if(e.target.tagName== "A"){
+        const url = new URL(e.target.href)
+        console.log(url.pathname);
+        
+    }
+    
+
+}
