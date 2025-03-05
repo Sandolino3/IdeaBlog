@@ -5,9 +5,15 @@ const section = document.getElementById('dashboard-holder')
 export async function showCatalog(context){
     context.showSection(section)
     let ideas = await getAllIdeas();
+
+    if (ideas.length == 0) {
+        section.innerHTML = '<h1>No ideas yet! Be the first one :)</h1>'
+    }else{
+        section.replaceChildren( ...ideas.map(createIdeaPreview))
+
+    }
     
     
-   section.replaceChildren( ...ideas.map(createIdeaPreview))
            
     console.log(...ideas.map(createIdeaPreview));
     
@@ -24,8 +30,8 @@ function createIdeaPreview(idea){
             <img class="card-image" src="${idea.img}" alt="Card image cap">
             <a class="btn" href="">Details</a>
         </div>`        
-    return element
+    return element;
 }
 
 
-{/* <h1>No ideas yet! Be the first one :)</h1> */}
+
