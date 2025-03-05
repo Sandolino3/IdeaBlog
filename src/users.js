@@ -14,13 +14,15 @@ export async function register(email, password) {
 }
 
 export async function login(email, password){
-    const user = post(endpoints.login, {email,password})
+    const user = post(endpoints.login, {email, password})
 
     localStorage.setItem('user', JSON.stringify(user))
 
 }
 
 export async function logout(){
+    console.log('asd');
+    
     get(endpoints.logout)
     localStorage.removeItem('user')
 

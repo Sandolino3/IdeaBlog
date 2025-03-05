@@ -9,14 +9,9 @@ export async function showCatalog(context){
     if (ideas.length == 0) {
         section.innerHTML = '<h1>No ideas yet! Be the first one :)</h1>'
     }else{
-        section.replaceChildren( ...ideas.map(createIdeaPreview))
-
+        section.replaceChildren( ...ideas.map(createIdeaPreview)) 
     }
-    
-    
-           
-    console.log(...ideas.map(createIdeaPreview));
-    
+        
 }
 
 function createIdeaPreview(idea){    

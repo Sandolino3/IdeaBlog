@@ -5,6 +5,7 @@ import{ showCreate }from"./views/create.js"
 import{ showLogin }from"./views/login.js"
 import{ showRegister }from"./views/register.js"
 import { initialize } from "./router.js"
+import { logout } from "./users.js"
 
 
 
@@ -17,7 +18,8 @@ const links = {
     '/details': showDetails,
     '/create': showCreate,
     '/login': showLogin,
-    '/register': showRegister
+    '/register': showRegister,
+    '/logout': logout
 
 }
 
