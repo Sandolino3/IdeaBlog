@@ -1,4 +1,4 @@
-const host = "https://localhost:3030"
+const host = "http://localhost:3030"
 
 export async function request(method, url, data) {
     const options = {
@@ -20,7 +20,7 @@ export async function request(method, url, data) {
     }
 
     try {
-        const response = await fetch(host + url, options)
+        const response = await fetch(host + url, options)        
         if (response.ok != true) {
             if (response.status == 403) {
                 localStorage.removeItem('user')
@@ -31,6 +31,7 @@ export async function request(method, url, data) {
         if (response.status == 204) {
             return response
         } else {
+            
             return response.json()
         }
 

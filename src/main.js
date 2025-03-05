@@ -1,4 +1,3 @@
-import * as api from "./api.js"
 import { showHome } from "./views/home.js"
 import{ showCatalog }from"./views/catalog.js"
 import{ showDetails }from"./views/details.js"
@@ -24,6 +23,6 @@ const links = {
 
 const router = initialize(links)
 
+
+
 router.goTo('/')
-
-

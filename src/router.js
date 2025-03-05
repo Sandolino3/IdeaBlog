@@ -9,7 +9,7 @@ document.querySelector('nav').addEventListener('click', onNavigate)
         goTo
     }
 
-    return context
+    return context;
 
     function showSection(section){
     
