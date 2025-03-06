@@ -7,9 +7,7 @@ const endpoints = {
 }
 
 export async function register(email, password) {
-    const user = post(endpoints.register, {email, password})    
-    console.log(await user);
-    
+    const user = post(endpoints.register, {email, password})        
 
     localStorage.setItem('user', JSON.stringify(await user))
 

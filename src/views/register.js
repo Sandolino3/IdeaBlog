@@ -18,10 +18,10 @@ async function onSubmit(e) {
     let email = data.get('email')
     let password = data.get('password')
     let rePassword = data.get('repeatPassword')
-    console.log(email.length);
+
     
 
-    if (password != rePassword && email.length <= 3 && password.length <= 3) {
+    if (password != rePassword) {
         alert('Password does not match!')
     }else{
         await register(email, password)
