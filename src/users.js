@@ -7,22 +7,22 @@ const endpoints = {
 }
 
 export async function register(email, password) {
-    const user = post(endpoints.register, {email, password})
+    const user = post(endpoints.register, {email, password})    
+    console.log(await user);
+    
 
-    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('user', JSON.stringify(await user))
 
 }
 
 export async function login(email, password){
-    const user = post(endpoints.login, {email, password})
+    const user = post(endpoints.login, {email, password})    
 
-    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('user', JSON.stringify(await user))
 
 }
 
 export async function logout(){
-    console.log('asd');
-    
     get(endpoints.logout)
     localStorage.removeItem('user')
 
