@@ -1,12 +1,14 @@
 
 export function initialize(links){
 const main = document.querySelector('main')
-document.querySelector('nav').addEventListener('click', onNavigate)
+const nav = document.querySelector('nav')
+nav.addEventListener('click', onNavigate)
 
 
     const context = {
         showSection,
-        goTo
+        goTo,
+        updateNav
     }
 
     return context;
@@ -39,7 +41,19 @@ document.querySelector('nav').addEventListener('click', onNavigate)
             handler(context)
         }
     }
-    
+    function updateNav(){
+        const user = localStorage.getItem('user')
+        console.log(user);
+        
+        if (user) {
+            nav.querySelectorAll('#user').forEach(el => el.style.display = 'inline-block')
+            nav.querySelectorAll('#guest').forEach(el => el.style.display = 'none')
+
+        }else{
+            nav.querySelectorAll('#guest').forEach(el => el.style.display = 'inline-block')
+            nav.querySelectorAll('#user').forEach(el => el.style.display = 'none')
+        }
+    }
 }
 
 

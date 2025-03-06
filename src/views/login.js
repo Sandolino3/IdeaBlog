@@ -20,11 +20,11 @@ async function loginSubmit(e) {
     let data = new FormData(formEl)
     let email = data.get('email')
     let password = data.get('password')
-    console.log(email,password);
     
 
     await login(email,password)
     formEl.reset()
+    ctx.updateNav()
     ctx.goTo('/')
     
 }

@@ -26,7 +26,7 @@ async function onSubmit(e) {
     }else{
         await register(email, password)
         formEl.reset()
-    
+        ctx.updateNav()
         ctx.goTo('/')
     }    
 
