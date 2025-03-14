@@ -35,10 +35,10 @@ nav.addEventListener('click', onNavigate)
     
     }
     
-    function goTo(name){
+    function goTo(name, ...params){
         const handler = links[name]
         if (typeof handler == 'function') {
-            handler(context)
+            handler(context, ...params)
         }
     }
     function updateNav(){

@@ -1,6 +1,10 @@
 import { getAllIdeas } from "../data.js"
+// import{ goTo } from "../router.js"
 
 const section = document.getElementById('dashboard-holder')
+section.addEventListener('click', onSelectDetails)
+
+let ctx = null;
 
 export async function showCatalog(context){
     context.showSection(section)
@@ -12,6 +16,7 @@ export async function showCatalog(context){
         section.replaceChildren( ...ideas.map(createIdeaPreview)) 
     }
         
+    ctx = context;
 }
 
 function createIdeaPreview(idea){    
@@ -23,9 +28,20 @@ function createIdeaPreview(idea){
                 <p class="card-text">${idea.title}</p>
             </div>
             <img class="card-image" src="${idea.img}" alt="Card image cap">
-            <a class="btn" href="">Details</a>
+            <a data-id= "${idea._id}" class="btn" href="/details">Details</a>
         </div>`        
     return element;
+}
+
+function onSelectDetails(e){
+    e.preventDefault()
+    if (e.target.tagName == "A") {
+        let url = new URL(e.target.href)
+        ctx.goTo(url.pathname,e.target.dataset.id)
+        
+    }
+    
+    
 }
 
 
