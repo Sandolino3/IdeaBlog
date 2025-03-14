@@ -6,22 +6,25 @@ export async function showDetails(context, id){
 
     let detailsData = await getDetails(id)
     
-    section.replaceChildren(createDetailPreview(detailsData))
+    section.innerHTML = createDetailPreview(detailsData)
      
     context.showSection(section)
 }
 
 function createDetailPreview(details){
-    const element = document.createElement('div')
-    element.innerHTML =`<img class="det-img" src=${details.img} />
+    const user = JSON.parse(localStorage.getItem('user'))
+    let element = `<img class="det-img" src=${details.img} />
         <div class="desc">
             <h2 class="display-5">${details.title}</h2>
             <p class="infoType">Description:</p>
             <p class="idea-description">${details.description}</p>
         </div>
-        <div class="text-center">
-            <a data-id= "${details._ownerId}" class="btn detb" href="">Delete</a>
+`
+        if (user && user._id == details._ownerId ) {            
+            element += `<div class="text-center">
+            <a data-id= "${details._ownerId}" class="btn detb" href="/delete">Delete</a>
         </div>`
+        }
     return element
 }
 
