@@ -43,7 +43,6 @@ nav.addEventListener('click', onNavigate)
     }
     function updateNav(){
         const user = localStorage.getItem('user')
-        console.log(user);
         
         if (user) {
             nav.querySelectorAll('#user').forEach(el => el.style.display = 'inline-block')
